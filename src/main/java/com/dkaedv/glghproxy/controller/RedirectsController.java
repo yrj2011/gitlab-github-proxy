@@ -23,6 +23,13 @@ public class RedirectsController {
 		return "redirect:" + gitlabUrl + "/" + namespace;
 	}
 
+    @RequestMapping("/{group}/{project}/info/refs")
+    public String infoRefs(@PathVariable String group, @PathVariable String project ){
+
+        return "redirect:" + gitlabUrl + "/" +group+"/"+project+"/info/refs?service=git-upload-pack";
+
+    }
+
 	@RequestMapping("/{namespace}/{repo}")
 	public String repoHomepage(
 			@PathVariable String namespace,
