@@ -6,6 +6,7 @@ import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.dkaedv.glghproxy.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,7 @@ public class LoginController {
 		
 		String callbackUrl = buildCallbackUrl(request);
 		
-		return "redirect:" + gitlabUrl + "/oauth/authorize?client_id=" + client_id + "&response_type=code&redirect_uri=" + callbackUrl;
+		return "redirect:" + gitlabUrl + "/oauth/authorize?client_id=" + client_id + "&response_type=code&redirect_uri=" + callbackUrl+ Constant.GIT_TOKEN_APPEND;
 	}
 
 	private String buildCallbackUrl(HttpServletRequest request) throws MalformedURLException {
@@ -55,7 +56,7 @@ public class LoginController {
 			@RequestParam String code
 			) {
 
-		String answer = "redirect:" + this.redirectUri + "&code=" + code;
+		String answer = "redirect:" + this.redirectUri + "&code=" + code+ Constant.GIT_TOKEN_APPEND;
 		
 		// Clear redirect uri
 		this.redirectUri = null;

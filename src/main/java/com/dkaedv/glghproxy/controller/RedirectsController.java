@@ -1,5 +1,6 @@
 package com.dkaedv.glghproxy.controller;
 
+import com.dkaedv.glghproxy.Constant;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ public class RedirectsController {
 			@PathVariable String namespace
 			) {
 		
-		return "redirect:" + gitlabUrl + "/" + namespace;
+		return "redirect:" + gitlabUrl + "/" + namespace+ Constant.GIT_TOKEN_ADD;
 	}
 
     @RequestMapping("/{group}/{project}/info/refs")
@@ -36,7 +37,7 @@ public class RedirectsController {
 			@PathVariable String repo
 			) {
 		
-		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo;
+		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo+ Constant.GIT_TOKEN_ADD;
 	}
 	
 	@RequestMapping("/{namespace}/{repo}/commit/{sha}")
@@ -46,7 +47,7 @@ public class RedirectsController {
 			@PathVariable String sha
 			) {
 		
-		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/commit/" + sha;
+		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/commit/" + sha+ Constant.GIT_TOKEN_ADD;
 	}
 
 	@RequestMapping("/{namespace}/{repo}/tree/**")
@@ -61,7 +62,7 @@ public class RedirectsController {
 		AntPathMatcher apm = new AntPathMatcher();
 		String branch = apm.extractPathWithinPattern(bestMatchPattern, path);
 
-		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/tree/" + branch;
+		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/tree/" + branch+ Constant.GIT_TOKEN_ADD;
 	}
 
 	@RequestMapping("/{namespace}/{repo}/compare")
@@ -70,7 +71,7 @@ public class RedirectsController {
 			@PathVariable String repo
 			) {
 
-		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/compare";
+		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/compare"+ Constant.GIT_TOKEN_ADD;
 	}
 
 	@RequestMapping("/{namespace}/{repo}/compare/{spec}")
@@ -80,7 +81,7 @@ public class RedirectsController {
 			@PathVariable String spec
 			) {
 
-		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/compare/" + spec;
+		return "redirect:" + gitlabUrl + "/" + namespace + "/" + repo + "/compare/" + spec+ Constant.GIT_TOKEN_ADD;
 	}
 
 }

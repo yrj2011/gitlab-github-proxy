@@ -226,14 +226,16 @@ public class ReposController {
 			) throws IOException {
 
 		GitlabAPI api = gitlab.connect(authorization);
-		GitlabProjectHook createdHook = api.addProjectHook(
+		/*GitlabProjectHook createdHook = api.addProjectHook(
 				namespace + "/" + repo,
 				hook.getConfig().get("url"), 
 				hook.getEvents().contains("push"), 
 				false,
 				hook.getEvents().contains("pull_request"));
-		
-		return GitlabToGithubConverter.convertHook(createdHook);
+		api.addPro
+		return GitlabToGithubConverter.convertHook(createdHook);*/
+		// TODO hook方法待实现
+		return null;
 	}
 
 	@RequestMapping(value = "/{namespace}/{repo}/hooks/{hookId}", method = RequestMethod.DELETE)
